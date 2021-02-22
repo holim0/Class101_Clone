@@ -13,7 +13,7 @@ const ClassInformation = () => {
             <ClassInfoContainer>
                 <ImageContainer src={mainImg} alt="main"></ImageContainer>
             </ClassInfoContainer>
-            {/* <PurchaseContainer>구매 항목</PurchaseContainer> */}
+            <PurchaseContainer>구매 항목</PurchaseContainer>
         </Container>
     );
 };
