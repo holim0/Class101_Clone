@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, MouseEvent } from "react";
+import React, { useEffect, useState, useRef, forwardRef } from "react";
 import {
     ClassInfoContainer,
     PurchaseContainer,
@@ -29,11 +29,12 @@ import infoImg2 from "../assets/infoImg2.png";
 import infoImg3 from "../assets/infoImg3.png";
 import catImg from "../assets/cat.png";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import { scrollType } from "../types";
 
-const FirstClassMainSpace = () => {
+const FirstClassMainSpace = forwardRef((props, ref: any) => {
     return (
         <ClassMainInfo>
-            <IntroduceTitle>
+            <IntroduceTitle ref={ref}>
                 클래스를 <br></br>소개합니다.
             </IntroduceTitle>
             <CommonContainer>
@@ -73,11 +74,11 @@ const FirstClassMainSpace = () => {
             </CommonContainer>
         </ClassMainInfo>
     );
-};
+});
 
-const SecondClassMainSpace = () => {
+const SecondClassMainSpace = forwardRef((props, ref: any) => {
     return (
-        <CommonContainer>
+        <CommonContainer ref={ref}>
             <TextTitle shape="">
                 📍 신사임당│스마트스토어로 월 100만원 만들기, 평범한 사람이 돈을
                 만드는 비법
@@ -96,11 +97,11 @@ const SecondClassMainSpace = () => {
             <MoreInfoButton>해당 클래스 자세히 보기</MoreInfoButton>
         </CommonContainer>
     );
-};
+});
 
-const ThirdClassMainSpace = () => {
+const ThirdClassMainSpace = forwardRef((props, ref: any) => {
     return (
-        <CommonContainer>
+        <CommonContainer ref={ref}>
             <TextTitle shape="">
                 📍온라인탑셀러 │무자본, 무재고로 중국 구매 대행 사업/부업
                 시작하기
@@ -119,11 +120,11 @@ const ThirdClassMainSpace = () => {
             <MoreInfoButton>해당 클래스 자세히 보기</MoreInfoButton>
         </CommonContainer>
     );
-};
+});
 
-const FourthClassMainSpace = () => {
+const FourthClassMainSpace = forwardRef((props, ref: any) => {
     return (
-        <CommonContainer>
+        <CommonContainer ref={ref}>
             <div
                 style={{
                     display: "flex",
@@ -137,11 +138,11 @@ const FourthClassMainSpace = () => {
             </div>
         </CommonContainer>
     );
-};
+});
 
-const RefundContainer = () => {
+const RefundContainer = forwardRef((props, ref: any) => {
     return (
-        <CommonContainer>
+        <CommonContainer ref={ref}>
             <TextTitle shape="">환불정책</TextTitle>
             <RefundNotice>
                 <div style={{ marginBottom: "10px" }}>
@@ -153,16 +154,10 @@ const RefundContainer = () => {
             </RefundNotice>
         </CommonContainer>
     );
-};
+});
 
 const ClassInformation = () => {
     const [y, setY] = useState(0);
-
-    const [location, setlocation] = useState({
-        review: 0,
-        introduce: 0,
-        refund: 0,
-    });
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -170,10 +165,20 @@ const ClassInformation = () => {
         });
     }, []);
 
-    const focusTarget = useRef<any>([]);
-    const scrollToRef = (event: MouseEvent, value: string) => {
-        console.log(value);
-        focusTarget.current.scrollIntoView({ behavior: "smooth" });
+    const scrollTarget = useRef<any>([]);
+
+    const scrollToRef = (event: any) => {
+        const targetObject: scrollType = {
+            Introduce: 0,
+            Creator: 1,
+            Refund: 2,
+        };
+        const idx = event.target.value;
+        const target = targetObject[idx];
+        window.scrollTo({
+            behavior: "smooth",
+            top: scrollTarget.current[target].offsetTop,
+        });
     };
 
     return (
@@ -181,15 +186,13 @@ const ClassInformation = () => {
             <ClassInfoContainer>
                 <ImageContainer src={mainImg} alt="main"></ImageContainer>
                 <ButtonContainer flag={y > 460 ? true : false}>
-                    <ButtonInside>
+                    <ButtonInside onClick={scrollToRef}>
                         <Btn>후기</Btn>
-                        <Btn onClick={(event) => scrollToRef(event, "PREVIEW")}>
-                            클래스 소개
-                        </Btn>
+                        <Btn value="Introduce">클래스 소개</Btn>
                         <Btn>커리큘럼</Btn>
-                        <Btn>크리에이터</Btn>
+                        <Btn value="Creator">크리에이터</Btn>
                         <Btn>커뮤니티</Btn>
-                        <Btn>환불 정책</Btn>
+                        <Btn value="Refund">환불 정책</Btn>
                         <Btn>추천</Btn>
                     </ButtonInside>
                 </ButtonContainer>
@@ -207,12 +210,16 @@ const ClassInformation = () => {
                         </Info>
                     </ClassSimpleInfo>
                 </ClassSimpleInfoContainer>
-                <FirstClassMainSpace />
+                <FirstClassMainSpace
+                    ref={(el) => (scrollTarget.current[0] = el)}
+                />
                 <SecondClassMainSpace />
                 <ThirdClassMainSpace />
-                <FourthClassMainSpace />
-                <RefundContainer />
-                <Dummy>dijoidjqwoidjo</Dummy>
+                <FourthClassMainSpace
+                    ref={(el) => (scrollTarget.current[1] = el)}
+                />
+                <RefundContainer ref={(el) => (scrollTarget.current[2] = el)} />
+                <Dummy>추천항목입니다.</Dummy>
             </ClassInfoContainer>
 
             <PurchaseContainer>구매 항목</PurchaseContainer>
