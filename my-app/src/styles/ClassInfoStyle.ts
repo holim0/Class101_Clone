@@ -74,6 +74,10 @@ const ClassSimpleInfo = styled.div`
     margin: 0;
     width: 75%;
     justify-content: space-between;
+
+    @media only screen and (max-width: 1024px) {
+        flex-direction: column;
+    }
 `;
 
 const Info = styled.div`
@@ -88,6 +92,10 @@ const Info = styled.div`
     & > div {
         color: black;
         margin-left: 12px;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        margin-bottom: 12px;
     }
 `;
 
@@ -109,6 +117,8 @@ const CommonContainer = styled.div`
     flex-direction: column;
     margin: 16px 0px;
     border-bottom: 2px solid rgba(16, 22, 26, 0.15);
+    padding-bottom: 20px;
+    padding-top: 20px;
 `;
 
 const Text = styled.div`
@@ -116,9 +126,9 @@ const Text = styled.div`
     padding-bottom: 20px;
 `;
 
-const TextTitle = styled.div`
+const TextTitle = styled.div<{ shape: string }>`
     font-size: 20px;
-    font-weight: bold;
+    font-weight: ${(props) => props.shape || "bold"};
     line-height: 28px;
     margin-bottom: 15px;
 `;
@@ -138,6 +148,34 @@ const MoreInfoButton = styled.button`
     justify-content: space-around;
 `;
 
+const List = styled.ul`
+    font-size: 16px;
+    & > li {
+        margin-bottom: 4px;
+    }
+`;
+
+const CircleImg = styled.img`
+    border-radius: 50%;
+    border: 1px solid rgba(16, 22, 26, 0.15);
+    height: 62px;
+`;
+
+const RefundNotice = styled.div`
+    background-color: rgb(248, 248, 249);
+    padding: 24px 24px;
+`;
+
+const DetailRefundInfo = styled.div`
+    cursor: pointer;
+    color: rgb(168, 174, 179);
+    transition: color 0.2s ease 0s;
+    &:hover {
+        text-decoration: underline;
+        color: gray;
+    }
+`;
+
 export {
     ClassInfoContainer,
     PurchaseContainer,
@@ -153,7 +191,11 @@ export {
     ClassMainInfo,
     IntroduceTitle,
     CommonContainer,
+    List,
     Text,
     TextTitle,
     MoreInfoButton,
+    CircleImg,
+    RefundNotice,
+    DetailRefundInfo,
 };
