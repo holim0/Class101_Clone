@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef, MouseEvent } from "react";
 import {
     ClassInfoContainer,
     PurchaseContainer,
@@ -21,6 +21,7 @@ import {
     CircleImg,
     RefundNotice,
     DetailRefundInfo,
+    Dummy,
 } from "../styles/ClassInfoStyle";
 import mainImg from "../assets/mainImg.png";
 import infoImg from "../assets/infoImg.png";
@@ -155,14 +156,36 @@ const RefundContainer = () => {
 };
 
 const ClassInformation = () => {
+    const [y, setY] = useState(0);
+
+    const [location, setlocation] = useState({
+        review: 0,
+        introduce: 0,
+        refund: 0,
+    });
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setY(window.pageYOffset);
+        });
+    }, []);
+
+    const focusTarget = useRef<any>([]);
+    const scrollToRef = (event: MouseEvent, value: string) => {
+        console.log(value);
+        focusTarget.current.scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
         <Container>
             <ClassInfoContainer>
                 <ImageContainer src={mainImg} alt="main"></ImageContainer>
-                <ButtonContainer>
+                <ButtonContainer flag={y > 460 ? true : false}>
                     <ButtonInside>
                         <Btn>후기</Btn>
-                        <Btn>클래스 소개</Btn>
+                        <Btn onClick={(event) => scrollToRef(event, "PREVIEW")}>
+                            클래스 소개
+                        </Btn>
                         <Btn>커리큘럼</Btn>
                         <Btn>크리에이터</Btn>
                         <Btn>커뮤니티</Btn>
@@ -189,7 +212,9 @@ const ClassInformation = () => {
                 <ThirdClassMainSpace />
                 <FourthClassMainSpace />
                 <RefundContainer />
+                <Dummy>dijoidjqwoidjo</Dummy>
             </ClassInfoContainer>
+
             <PurchaseContainer>구매 항목</PurchaseContainer>
         </Container>
     );

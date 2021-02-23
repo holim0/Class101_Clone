@@ -21,16 +21,21 @@ const ImageContainer = styled.img`
     width: 100%;
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div<{ flag: boolean }>`
     display: flex;
     white-space: nowrap;
+    background-color: white;
     overflow-x: auto;
     font-size: 14px;
     width: 100%;
     justify-content: space-between;
-    margin-top: 20px;
     box-shadow: rgb(237 239 240) 0px -1px 0px 0px inset;
+    position: ${(props) => (props.flag ? "fixed" : null)};
+    top: ${(props) => (props.flag ? "0px" : null)};
+    padding-top: ${(props) => (props.flag ? "0px" : "20px")};
+    z-index: ${(props) => (props.flag ? "999" : "0")};
 `;
+
 const ButtonInside = styled.div`
     padding: 1px;
 `;
@@ -176,6 +181,11 @@ const DetailRefundInfo = styled.div`
     }
 `;
 
+const Dummy = styled.div`
+    height: 1500px;
+    /* display: none; */
+`;
+
 export {
     ClassInfoContainer,
     PurchaseContainer,
@@ -198,4 +208,5 @@ export {
     CircleImg,
     RefundNotice,
     DetailRefundInfo,
+    Dummy,
 };
