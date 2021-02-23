@@ -1,14 +1,11 @@
 import styled from "styled-components";
 
 const GlobalContainer = styled.div`
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-
-    @media only sreen and (max-width: 1024px) {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    @media only sreen and (max-width: 1239px) and (min-width: 1024px) {
+        margin-left: 32px;
+        margin-right: 32px;
     }
 `;
 

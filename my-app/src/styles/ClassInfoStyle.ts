@@ -9,7 +9,7 @@ const Container = styled.div`
 const ClassInfoContainer = styled.div`
     width: 100%;
     position: relative;
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: 1000px) {
         width: 67%;
         height: auto;
     }
