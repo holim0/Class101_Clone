@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 const GlobalContainer = styled.div`
-    max-width: 1176px;
-    width: 100%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 `;

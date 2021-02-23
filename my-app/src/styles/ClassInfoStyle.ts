@@ -57,6 +57,7 @@ const ClassSimpleInfoContainer = styled.div`
     padding-top: 40px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgb(237, 239, 240);
+    white-space: nowrap;
 `;
 
 const ClassSimpleInfoTitle = styled.div`
@@ -92,6 +93,51 @@ const Info = styled.div`
 
 const ClassMainInfo = styled.div``;
 
+const IntroduceTitle = styled.div`
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(27, 28, 29);
+    line-height: 34px;
+    letter-spacing: -0.4px;
+    position: relative;
+    width: 100%;
+    margin: 48px 0px 24px;
+`;
+
+const CommonContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0px;
+    border-bottom: 2px solid rgba(16, 22, 26, 0.15);
+`;
+
+const Text = styled.div`
+    margin-top: 20px;
+    padding-bottom: 20px;
+`;
+
+const TextTitle = styled.div`
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    margin-bottom: 15px;
+`;
+
+const MoreInfoButton = styled.button`
+    margin-top: 30px;
+    margin-bottom: 30px;
+    outline: none;
+    padding: 20px 32px;
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 0;
+    display: flex;
+    justify-content: space-around;
+`;
+
 export {
     ClassInfoContainer,
     PurchaseContainer,
@@ -105,4 +151,9 @@ export {
     ClassSimpleInfo,
     Info,
     ClassMainInfo,
+    IntroduceTitle,
+    CommonContainer,
+    Text,
+    TextTitle,
+    MoreInfoButton,
 };

@@ -6,8 +6,9 @@ export const GlobalStyle = createGlobalStyle`
 
     html,
     body {
-        overflow: hidden;
+        overflow: scroll;
         width: 100%;
+        font-size: 14px;
     }
 
     * {
