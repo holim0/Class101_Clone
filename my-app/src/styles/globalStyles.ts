@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
 
     html,
     body {
-        overflow: scroll;
+        overflow-x: hidden;
         width: 100%;
         font-size: 14px;
     }

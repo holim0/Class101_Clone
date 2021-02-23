@@ -4,18 +4,29 @@ const Container = styled.div`
     display: flex;
     width: 100%;
     padding-top: 32px;
+    @media only screen and (max-width: 1024px) {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
 `;
 
 const ClassInfoContainer = styled.div`
     width: 100%;
     position: relative;
-    @media only screen and (min-width: 1000px) {
+    @media only screen and (min-width: 1024px) {
         width: 67%;
         height: auto;
     }
 `;
 
-const PurchaseContainer = styled.div``;
+const PurchaseContainer = styled.div`
+    background-color: blue;
+    display: none;
+    @media only screen and (min-width: 1024px) {
+        width: 33%;
+        display: block;
+    }
+`;
 
 const ImageContainer = styled.img`
     width: 100%;
@@ -183,7 +194,6 @@ const DetailRefundInfo = styled.div`
 
 const Dummy = styled.div`
     height: 1500px;
-    /* display: none; */
 `;
 
 export {

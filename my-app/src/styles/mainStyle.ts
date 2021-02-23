@@ -7,6 +7,11 @@ const GlobalContainer = styled.div`
         margin-left: 32px;
         margin-right: 32px;
     }
+
+    @media only sreen and (max-width: 1024px) {
+        margin-left: 32px;
+        margin-right: 32px;
+    }
 `;
 
 const MainContainer = styled.div`
