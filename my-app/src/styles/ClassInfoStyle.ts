@@ -19,15 +19,6 @@ const ClassInfoContainer = styled.div`
     }
 `;
 
-const PurchaseContainer = styled.div`
-    background-color: blue;
-    display: none;
-    @media only screen and (min-width: 1024px) {
-        width: 33%;
-        display: block;
-    }
-`;
-
 const ImageContainer = styled.img`
     width: 100%;
 `;
@@ -41,8 +32,8 @@ const ButtonContainer = styled.div<{ flag: boolean }>`
     width: 100%;
     justify-content: space-between;
     box-shadow: rgb(237 239 240) 0px -1px 0px 0px inset;
-    position: ${(props) => (props.flag ? "fixed" : null)};
-    top: ${(props) => (props.flag ? "0px" : null)};
+    position: ${(props) => (props.flag ? "sticky" : null)};
+    top: ${(props) => (props.flag ? "0" : null)};
     padding-top: ${(props) => (props.flag ? "0px" : "20px")};
     z-index: ${(props) => (props.flag ? "999" : "0")};
 `;
@@ -198,7 +189,6 @@ const Dummy = styled.div`
 
 export {
     ClassInfoContainer,
-    PurchaseContainer,
     Container,
     ImageContainer,
     ButtonContainer,

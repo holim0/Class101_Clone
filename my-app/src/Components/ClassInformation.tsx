@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, forwardRef } from "react";
 import {
     ClassInfoContainer,
-    PurchaseContainer,
     Container,
     ImageContainer,
     ButtonContainer,
@@ -28,8 +27,11 @@ import infoImg from "../assets/infoImg.png";
 import infoImg2 from "../assets/infoImg2.png";
 import infoImg3 from "../assets/infoImg3.png";
 import catImg from "../assets/cat.png";
+import RecommendImg from "../assets/RecommendImg.png";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { scrollType } from "../types";
+import PurchaseNavBar from "./PurchaseNavBar";
+import ResponsiveInfoSection from "./ResponsiveInfoSection";
 
 const FirstClassMainSpace = forwardRef((props, ref: any) => {
     return (
@@ -157,27 +159,40 @@ const RefundContainer = forwardRef((props, ref: any) => {
 });
 
 const ClassInformation = () => {
-    const [y, setY] = useState(0);
+    // const [y, setY] = useState<any>(null);
 
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            setY(window.pageYOffset);
-        });
-    }, []);
+    const [flag, setFlag] = useState(false);
 
     const scrollTarget = useRef<any>([]);
+    const tab = useRef<any>(null);
+
+    const scrollHandler = () => {
+        const val2 = tab.current.getBoundingClientRect().top;
+
+        if (val2 <= 0) {
+            setFlag(true);
+        } else {
+            setFlag(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", scrollHandler, true);
+    }, []);
 
     const scrollToRef = (event: any) => {
         const targetObject: scrollType = {
             Introduce: 0,
             Creator: 1,
             Refund: 2,
+            Recommend: 3,
         };
         const idx = event.target.value;
         const target = targetObject[idx];
+
         window.scrollTo({
             behavior: "smooth",
-            top: scrollTarget.current[target].offsetTop,
+            top: scrollTarget.current[target].offsetTop - 30,
         });
     };
 
@@ -185,15 +200,30 @@ const ClassInformation = () => {
         <Container>
             <ClassInfoContainer>
                 <ImageContainer src={mainImg} alt="main"></ImageContainer>
-                <ButtonContainer flag={y > 460 ? true : false}>
-                    <ButtonInside onClick={scrollToRef}>
-                        <Btn>후기</Btn>
-                        <Btn value="Introduce">클래스 소개</Btn>
-                        <Btn>커리큘럼</Btn>
-                        <Btn value="Creator">크리에이터</Btn>
-                        <Btn>커뮤니티</Btn>
-                        <Btn value="Refund">환불 정책</Btn>
-                        <Btn>추천</Btn>
+                <ResponsiveInfoSection />
+                <ButtonContainer flag={flag} ref={tab}>
+                    <ButtonInside>
+                        <Btn value="Review" onClick={scrollToRef}>
+                            후기
+                        </Btn>
+                        <Btn value="Introduce" onClick={scrollToRef}>
+                            클래스 소개
+                        </Btn>
+                        <Btn value="Curriculum" onClick={scrollToRef}>
+                            커리큘럼
+                        </Btn>
+                        <Btn value="Creator" onClick={scrollToRef}>
+                            크리에이터
+                        </Btn>
+                        <Btn value="Community" onClick={scrollToRef}>
+                            커뮤니티
+                        </Btn>
+                        <Btn value="Refund" onClick={scrollToRef}>
+                            환불 정책
+                        </Btn>
+                        <Btn value="Recommend" onClick={scrollToRef}>
+                            추천
+                        </Btn>
                     </ButtonInside>
                 </ButtonContainer>
                 <ClassSimpleInfoContainer>
@@ -219,10 +249,14 @@ const ClassInformation = () => {
                     ref={(el) => (scrollTarget.current[1] = el)}
                 />
                 <RefundContainer ref={(el) => (scrollTarget.current[2] = el)} />
-                <Dummy>추천항목입니다.</Dummy>
+                <Dummy ref={(el) => (scrollTarget.current[3] = el)}>
+                    <ImageContainer
+                        src={RecommendImg}
+                        alt="RecommendImg"
+                    ></ImageContainer>
+                </Dummy>
             </ClassInfoContainer>
-
-            <PurchaseContainer>구매 항목</PurchaseContainer>
+            <PurchaseNavBar flag={flag} />
         </Container>
     );
 };
