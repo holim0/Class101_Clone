@@ -10,7 +10,6 @@
         "startDate": "now",
         "Caption": true
     },
-
     "monthlyInstallments": 5,
     "monthlyPayment": 22283,
     "discountAmount": 32,
