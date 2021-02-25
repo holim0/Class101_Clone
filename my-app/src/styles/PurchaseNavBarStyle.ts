@@ -60,9 +60,8 @@ const ButtonContainer = styled.div`
     justify-content: space-between;
     width: 100%;
     margin-top: 16px;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     & > button {
-        width: 30%;
         border: 0;
         outline: none;
         cursor: pointer;
@@ -74,6 +73,8 @@ const ButtonContainer = styled.div`
         height: 40px;
         white-space: nowrap;
         transition: background-color 0.1s ease 0s;
+        width: 100%;
+        margin-right: 10px;
     }
 
     & > button:hover {
@@ -99,6 +100,7 @@ const Option = styled.div`
 const MoreOptionBtn = styled.button`
     width: 100%;
     color: rgb(255, 255, 255);
+    cursor: pointer;
     background-color: rgb(255, 146, 43);
     font-weight: 700;
     font-size: 16px;
@@ -106,6 +108,13 @@ const MoreOptionBtn = styled.button`
     outline: none;
     height: 48px;
     border-radius: 3px;
+`;
+
+const Banner = styled.div`
+    padding: 16px 20px 16px 16px;
+    border: 1px solid rgb(237, 239, 240);
+    margin-top: 15px;
+    cursor: pointer;
 `;
 
 export {
@@ -119,4 +128,5 @@ export {
     OptionContainer,
     Option,
     MoreOptionBtn,
+    Banner,
 };

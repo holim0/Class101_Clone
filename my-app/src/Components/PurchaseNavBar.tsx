@@ -10,6 +10,7 @@ import {
     OptionContainer,
     Option,
     MoreOptionBtn,
+    Banner,
 } from "../styles/PurchaseNavBarStyle";
 
 import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
@@ -44,16 +45,20 @@ const PurchaseNavBar = ({ flag }: Props) => {
                 <ButtonContainer>
                     <button>665</button>
                     <button>공유하기</button>
-                    <button>선물하기</button>
+                    <button style={{ marginRight: "0" }}>선물하기</button>
                 </ButtonContainer>
-                <div style={{ padding: "0 20px", marginTop: "10px" }}>
+                <div style={{ marginTop: "10px" }}>
                     <MoreOptionBtn>수강 옵션 구경하기</MoreOptionBtn>
                 </div>
             </ControlContainer>
-            <div>
-                <div>준비물까지 챙겨주는 온라인 클래스</div>
-                <div>클래스 101, 서비스 소개 보기</div>
-            </div>
+            <Banner>
+                <div style={{ fontWeight: "bold", marginBottom: "10px" }}>
+                    준비물까지 챙겨주는 온라인 클래스
+                </div>
+                <div style={{ fontSize: "11px", color: "rgb(168, 174, 179)" }}>
+                    클래스 101, 서비스 소개 보기
+                </div>
+            </Banner>
         </PurchaseContainer>
     );
 };
