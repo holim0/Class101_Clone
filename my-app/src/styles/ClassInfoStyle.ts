@@ -51,11 +51,6 @@ const Btn = styled.button<{ flag: boolean }>`
     cursor: pointer;
     margin-right: 24px;
     border-bottom: ${(props) => (props.flag ? "3px solid black" : null)};
-
-    /* &:focus {
-        border-bottom: 3px solid black;
-        color: black;
-    } */
 `;
 
 const ClassSimpleInfoContainer = styled.div`
