@@ -1,3 +1,5 @@
+import { type } from "os";
+
 interface scrollType {
     [key: string]: number;
 }
@@ -21,4 +23,4 @@ interface ClassInfoType {
     discountAmount: number;
     goodAmount: number;
 }
-export { scrollType, ClassSimpleInfo, ClassInfoType };
+export type { scrollType, ClassSimpleInfo, ClassInfoType };

@@ -34,6 +34,9 @@ import PurchaseNavBar from "./PurchaseNavBar";
 import ResponsiveInfoSection from "./ResponsiveInfoSection";
 import Review from "./Review";
 import Curriculum from "./Curriculum";
+import { useDispatch, useSelector } from "react-redux";
+import { RequestClassInfoData } from "../store/ClassInfoStore";
+import { RootState } from "../store";
 
 const ClassIntroduceContainer = forwardRef((props, ref: any) => {
     return (
@@ -168,6 +171,12 @@ const ClassInformation = () => {
     const scrollTarget = useRef<any>([]);
     const tab = useRef<any>(null);
 
+    const dispatch = useDispatch();
+
+    const { classSimpleInfo } = useSelector(
+        (state: RootState) => state.ClassInfoStore
+    );
+
     const targetObject: scrollType = {
         Review: 0,
         Introduce: 1,
@@ -185,6 +194,10 @@ const ClassInformation = () => {
             setFlag(false);
         }
     };
+
+    useEffect(() => {
+        dispatch(RequestClassInfoData());
+    }, [dispatch]);
 
     useEffect(() => {
         window.addEventListener("scroll", scrollHandler, true);
@@ -277,13 +290,22 @@ const ClassInformation = () => {
                     <ClassSimpleInfoTitle>클래스 정보</ClassSimpleInfoTitle>
                     <ClassSimpleInfo>
                         <Info>
-                            클래스 분량 <div>0개 챕터, 0개 세부강의</div>
+                            클래스 분량
+                            <div>{`${classSimpleInfo.chapter}개 챕터, ${classSimpleInfo.videoNumber}개 세부강의`}</div>
                         </Info>
                         <Info>
-                            수강 가능일 <div>바로 수강 가능</div>
+                            수강 가능일
+                            <div>
+                                {classSimpleInfo.startDate === "now"
+                                    ? "바로 수강 가능"
+                                    : classSimpleInfo.startDate}
+                            </div>
                         </Info>
                         <Info>
-                            자막 포함 여부 <div>포함</div>
+                            자막 포함 여부
+                            <div>
+                                {classSimpleInfo.Caption ? "포함" : "미포함"}
+                            </div>
                         </Info>
                     </ClassSimpleInfo>
                 </ClassSimpleInfoContainer>

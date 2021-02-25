@@ -30,6 +30,13 @@ const ClassInfoStore = createSlice({
         RequestClassInfoSuccess: (state, { payload }) => {
             state.isLoading = false;
             state.isSuccess = true;
+            state.Category = payload.Category;
+            state.title = payload.title;
+            state.classSimpleInfo = payload.classSimpleInfo;
+            state.monthlyInstallments = payload.monthlyInstallments;
+            state.monthlyPayment = payload.monthlyPayment;
+            state.discountAmount = payload.discountAmount;
+            state.goodAmount = payload.goodAmount;
         },
         RequestClassInfoFail: (state) => {
             state.isLoading = false;

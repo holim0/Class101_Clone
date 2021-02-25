@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
     PurchaseContainer,
     ControlContainer,
@@ -12,29 +13,35 @@ import {
     MoreOptionBtn,
     Banner,
 } from "../styles/PurchaseNavBarStyle";
-
 import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
+import { RootState } from "../store";
 
 interface Props {
     flag: boolean;
 }
 
 const PurchaseNavBar = ({ flag }: Props) => {
+    const {
+        Category,
+        title,
+        monthlyInstallments,
+        monthlyPayment,
+        discountAmount,
+        goodAmount,
+    } = useSelector((state: RootState) => state.ClassInfoStore);
+
     return (
         <PurchaseContainer flag={flag}>
             <ControlContainer>
-                <CategoryTitle>온라인쇼핑몰 · 클래스101</CategoryTitle>
-                <Title>
-                    [1+1클래스] 스마트스토어를 활용한 중국 구매 대행 완벽
-                    가이드!
-                </Title>
+                <CategoryTitle>{`${Category[0]} • ${Category[1]}`}</CategoryTitle>
+                <Title>{title}</Title>
                 <OptionContainer>
                     <Option>선물하기</Option>
                     <Option>바로 수강 가능</Option>
                 </OptionContainer>
                 <PriceContainer>
-                    <div>12개월 할부</div>
-                    <div>32% 월 22,283원</div>
+                    <div>{`${monthlyInstallments}개월 할부`}</div>
+                    <div>{`${discountAmount}% 월 ${monthlyPayment.toLocaleString()}원`}</div>
                 </PriceContainer>
 
                 <VideoContainer>
@@ -43,7 +50,7 @@ const PurchaseNavBar = ({ flag }: Props) => {
                 </VideoContainer>
 
                 <ButtonContainer>
-                    <button>665</button>
+                    <button>{goodAmount}</button>
                     <button>공유하기</button>
                     <button style={{ marginRight: "0" }}>선물하기</button>
                 </ButtonContainer>

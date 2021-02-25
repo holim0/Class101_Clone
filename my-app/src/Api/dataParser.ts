@@ -5,6 +5,6 @@ export const ClassInfoParser = () => {
         const result = classInfo;
         setTimeout(() => {
             resolve(result);
-        }, 800);
+        }, 300);
     });
 };

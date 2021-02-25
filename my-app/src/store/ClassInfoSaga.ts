@@ -3,7 +3,7 @@ import {
     RequestClassInfoData,
     RequestClassInfoSuccess,
     RequestClassInfoFail,
-} from "./ClassInfoRedux";
+} from "./ClassInfoStore";
 import { ClassInfoParser } from "../Api/dataParser";
 
 const ClassInfoRequestApi = () => {
@@ -13,10 +13,8 @@ const ClassInfoRequestApi = () => {
 function* ClassInfoRequestFunc() {
     try {
         const response = yield call(ClassInfoRequestApi);
-
         if (response.success) {
-            console.log(response.result);
-            RequestClassInfoSuccess(response.result);
+            yield put(RequestClassInfoSuccess(response.result));
         } else {
             yield put(RequestClassInfoFail());
         }
@@ -27,7 +25,7 @@ function* ClassInfoRequestFunc() {
 }
 
 function* watchClassInfoSaga() {
-    yield takeLatest(RequestClassInfoData, ClassInfoSaga);
+    yield takeLatest(RequestClassInfoData, ClassInfoRequestFunc);
 }
 
 export default function* ClassInfoSaga(): Generator {
