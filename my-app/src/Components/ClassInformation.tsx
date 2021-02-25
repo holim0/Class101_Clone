@@ -32,6 +32,8 @@ import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { scrollType } from "../types";
 import PurchaseNavBar from "./PurchaseNavBar";
 import ResponsiveInfoSection from "./ResponsiveInfoSection";
+import Review from "./Review";
+import Curriculum from "./Curriculum";
 
 const FirstClassMainSpace = forwardRef((props, ref: any) => {
     return (
@@ -159,17 +161,14 @@ const RefundContainer = forwardRef((props, ref: any) => {
 });
 
 const ClassInformation = () => {
-    // const [y, setY] = useState<any>(null);
-
     const [flag, setFlag] = useState(false);
 
     const scrollTarget = useRef<any>([]);
     const tab = useRef<any>(null);
 
     const scrollHandler = () => {
-        const val2 = tab.current.getBoundingClientRect().top;
-
-        if (val2 <= 0) {
+        const relativeLocation = tab.current.getBoundingClientRect().top;
+        if (relativeLocation <= 0) {
             setFlag(true);
         } else {
             setFlag(false);
@@ -182,17 +181,19 @@ const ClassInformation = () => {
 
     const scrollToRef = (event: any) => {
         const targetObject: scrollType = {
-            Introduce: 0,
-            Creator: 1,
-            Refund: 2,
-            Recommend: 3,
+            Review: 0,
+            Introduce: 1,
+            Curriculum: 2,
+            Creator: 3,
+            Refund: 4,
+            Recommend: 5,
         };
         const idx = event.target.value;
         const target = targetObject[idx];
 
         window.scrollTo({
             behavior: "smooth",
-            top: scrollTarget.current[target].offsetTop - 30,
+            top: scrollTarget.current[target].offsetTop,
         });
     };
 
@@ -240,16 +241,20 @@ const ClassInformation = () => {
                         </Info>
                     </ClassSimpleInfo>
                 </ClassSimpleInfoContainer>
+                <Review ref={(el) => (scrollTarget.current[0] = el)} />
                 <FirstClassMainSpace
-                    ref={(el) => (scrollTarget.current[0] = el)}
+                    ref={(el) => (scrollTarget.current[1] = el)}
                 />
+                <Curriculum
+                    ref={(el) => (scrollTarget.current[2] = el)}
+                ></Curriculum>
                 <SecondClassMainSpace />
                 <ThirdClassMainSpace />
                 <FourthClassMainSpace
-                    ref={(el) => (scrollTarget.current[1] = el)}
+                    ref={(el) => (scrollTarget.current[3] = el)}
                 />
-                <RefundContainer ref={(el) => (scrollTarget.current[2] = el)} />
-                <Dummy ref={(el) => (scrollTarget.current[3] = el)}>
+                <RefundContainer ref={(el) => (scrollTarget.current[4] = el)} />
+                <Dummy ref={(el) => (scrollTarget.current[5] = el)}>
                     <ImageContainer
                         src={RecommendImg}
                         alt="RecommendImg"
