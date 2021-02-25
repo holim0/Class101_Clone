@@ -10,7 +10,7 @@ const Img = styled.img`
 
 const Review = forwardRef((props, ref: any) => {
     return (
-        <Container ref={ref}>
+        <Container ref={ref} data-name="Review">
             <Img src={ReviewImg}></Img>
         </Container>
     );

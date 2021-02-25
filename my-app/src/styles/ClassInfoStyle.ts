@@ -42,7 +42,7 @@ const ButtonInside = styled.div`
     padding: 1px;
 `;
 
-const Btn = styled.button`
+const Btn = styled.button<{ flag: boolean }>`
     color: rgb(133, 138, 141);
     padding: 14px 0px 13px;
     outline: none;
@@ -50,14 +50,12 @@ const Btn = styled.button`
     background-color: white;
     cursor: pointer;
     margin-right: 24px;
-    &:nth-child(1) {
+    border-bottom: ${(props) => (props.flag ? "3px solid black" : null)};
+
+    /* &:focus {
         border-bottom: 3px solid black;
         color: black;
-    }
-    &:focus {
-        border-bottom: 3px solid black;
-        color: black;
-    }
+    } */
 `;
 
 const ClassSimpleInfoContainer = styled.div`
@@ -183,7 +181,7 @@ const DetailRefundInfo = styled.div`
     }
 `;
 
-const Dummy = styled.div`
+const RecommendContainer = styled.div`
     height: 1500px;
 `;
 
@@ -208,5 +206,5 @@ export {
     CircleImg,
     RefundNotice,
     DetailRefundInfo,
-    Dummy,
+    RecommendContainer,
 };

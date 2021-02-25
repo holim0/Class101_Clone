@@ -10,7 +10,7 @@ const Img = styeld.img`
 
 const Curriculum = forwardRef((props, ref: any) => {
     return (
-        <Container ref={ref}>
+        <Container ref={ref} data-name="Curriculum">
             <Img src={CurriculumImg}></Img>
         </Container>
     );
