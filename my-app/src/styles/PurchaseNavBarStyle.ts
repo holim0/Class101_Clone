@@ -115,6 +115,8 @@ const Banner = styled.div`
     border: 1px solid rgb(237, 239, 240);
     margin-top: 15px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 `;
 
 export {
