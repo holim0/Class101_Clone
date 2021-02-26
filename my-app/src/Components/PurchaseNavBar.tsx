@@ -66,13 +66,7 @@ const PurchaseNavBar = ({ flag }: Props) => {
                         </div>
                         <span>공유하기</span>
                     </button>
-                    <button
-                        style={{
-                            marginRight: "0",
-                            backgroundColor: "orange",
-                            color: "white",
-                        }}
-                    >
+                    <button className="gift_btn">
                         <div>
                             <CardGiftcardIcon fontSize="small" />
                         </div>

@@ -31,8 +31,9 @@ const Button = styled.div`
     border-radius: 5px;
     margin-left: 20px;
 
+    transition: background-color ease 0.5s;
     &:hover {
-        background-color: #ff7043;
+        background-color: #ffb74d;
     }
 `;
 

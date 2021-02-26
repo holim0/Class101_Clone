@@ -75,7 +75,7 @@ const ButtonContainer = styled.div`
         font-size: 14px;
         height: 40px;
         white-space: nowrap;
-        transition: background-color 0.1s ease 0s;
+        transition: background-color 0.5s ease;
         width: 100%;
         margin-right: 10px;
     }
@@ -84,8 +84,13 @@ const ButtonContainer = styled.div`
         margin-left: 5px;
     }
 
-    & > button:hover {
+    & > button:not(:last-child):hover {
         background-color: #bdbdbd;
+    }
+    & > .gift_btn {
+        margin-right: 0;
+        background-color: orange;
+        color: white;
     }
 `;
 
@@ -115,6 +120,10 @@ const MoreOptionBtn = styled.button`
     outline: none;
     height: 48px;
     border-radius: 3px;
+    transition: background-color ease 0.5s;
+    &:hover {
+        background-color: #ffb74d;
+    }
 `;
 
 const Banner = styled.div`
