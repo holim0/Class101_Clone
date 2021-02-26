@@ -146,6 +146,7 @@ const MoreInfoButton = styled.button`
     border: 0;
     display: flex;
     justify-content: space-around;
+    align-content: center;
 `;
 
 const List = styled.ul`

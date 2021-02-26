@@ -1,5 +1,3 @@
-import { type } from "os";
-
 interface scrollType {
     [key: string]: number;
 }
@@ -26,7 +24,7 @@ interface ClassInfoType {
 
 interface ButtonPropsType {
     flag: boolean;
-    curSection: string;
+    curSectionName: string;
     scrollToRef: (event: any) => void;
 }
 export type { scrollType, ClassSimpleInfo, ClassInfoType, ButtonPropsType };

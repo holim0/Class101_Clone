@@ -39,6 +39,7 @@ import { RequestClassInfoData } from "../store/ClassInfoStore";
 import { RootState } from "../store";
 import { ButtonPropsType } from "../types";
 import CommunityContainer from "./CommunityContainer";
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
 const ClassIntroduceContainer = forwardRef<HTMLDivElement>((props, ref) => {
     return (
@@ -86,55 +87,55 @@ const ClassIntroduceContainer = forwardRef<HTMLDivElement>((props, ref) => {
 });
 
 const ButtonSpace = forwardRef(
-    ({ flag, curSection, scrollToRef }: ButtonPropsType, ref: any) => {
+    ({ flag, curSectionName, scrollToRef }: ButtonPropsType, ref: any) => {
         return (
             <ButtonContainer flag={flag} ref={ref}>
                 <ButtonInside>
                     <Btn
                         value="Review"
-                        flag={curSection === "Review"}
+                        flag={curSectionName === "Review"}
                         onClick={scrollToRef}
                     >
                         후기
                     </Btn>
                     <Btn
                         value="Introduce"
-                        flag={curSection === "Introduce"}
+                        flag={curSectionName === "Introduce"}
                         onClick={scrollToRef}
                     >
                         클래스 소개
                     </Btn>
                     <Btn
                         value="Curriculum"
-                        flag={curSection === "Curriculum"}
+                        flag={curSectionName === "Curriculum"}
                         onClick={scrollToRef}
                     >
                         커리큘럼
                     </Btn>
                     <Btn
                         value="Creator"
-                        flag={curSection === "Creator"}
+                        flag={curSectionName === "Creator"}
                         onClick={scrollToRef}
                     >
                         크리에이터
                     </Btn>
                     <Btn
                         value="Community"
-                        flag={curSection === "Community"}
+                        flag={curSectionName === "Community"}
                         onClick={scrollToRef}
                     >
                         커뮤니티
                     </Btn>
                     <Btn
                         value="Refund"
-                        flag={curSection === "Refund"}
+                        flag={curSectionName === "Refund"}
                         onClick={scrollToRef}
                     >
                         환불 정책
                     </Btn>
                     <Btn
                         value="Recommend"
-                        flag={curSection === "Recommend"}
+                        flag={curSectionName === "Recommend"}
                         onClick={scrollToRef}
                     >
                         추천
@@ -163,7 +164,9 @@ const FirstClassExplanation = forwardRef<HTMLDivElement>((props, ref) => {
                 스마트스토어 시작에 필요한 교과서. 시작에 필요한 모든 것을
                 알려드립니다.
             </div>
-            <MoreInfoButton>해당 클래스 자세히 보기</MoreInfoButton>
+            <MoreInfoButton>
+                해당 클래스 자세히 보기 <ArrowRightAltIcon fontSize="large" />
+            </MoreInfoButton>
         </CommonContainer>
     );
 });
@@ -186,7 +189,9 @@ const SecondClassExplanation = forwardRef<HTMLDivElement>((props, ref) => {
                 제로베이스에서 1개월 만에 순이익 200만 원을 만들었던 방법 그대로
                 알려드립니다.
             </div>
-            <MoreInfoButton>해당 클래스 자세히 보기</MoreInfoButton>
+            <MoreInfoButton>
+                해당 클래스 자세히 보기 <ArrowRightAltIcon fontSize="large" />
+            </MoreInfoButton>
         </CommonContainer>
     );
 });
@@ -228,7 +233,7 @@ const RefundInfoContainer = forwardRef<HTMLDivElement>((props, ref) => {
 const ClassInformationContainer = () => {
     const [flag, setFlag] = useState(false);
 
-    const [curSection, setCurYLocation] = useState<string>("Review");
+    const [curSectionName, setCurSectionName] = useState<string>("Review");
 
     const scrollTarget = useRef<HTMLDivElement[]>([]);
     const tabRef = useRef<HTMLButtonElement>(null);
@@ -277,7 +282,7 @@ const ClassInformationContainer = () => {
             if (curTargetView.length > 0) {
                 const targetName: any =
                     curTargetView[curTargetView.length - 1].dataset.name;
-                setCurYLocation(targetName);
+                setCurSectionName(targetName);
             }
         });
     }, []);
@@ -301,7 +306,7 @@ const ClassInformationContainer = () => {
                 <ButtonSpace
                     ref={tabRef}
                     flag={flag}
-                    curSection={curSection}
+                    curSectionName={curSectionName}
                     scrollToRef={scrollToRef}
                 />
                 <ClassSimpleInfoContainer>
@@ -327,26 +332,28 @@ const ClassInformationContainer = () => {
                         </Info>
                     </ClassSimpleInfo>
                 </ClassSimpleInfoContainer>
-                <ReviewContainer ref={(el) => (scrollTarget.current[0] = el)} />
+                <ReviewContainer
+                    ref={(refElement) => (scrollTarget.current[0] = refElement)}
+                />
                 <ClassIntroduceContainer
-                    ref={(el) => (scrollTarget.current[1] = el)}
+                    ref={(refElement) => (scrollTarget.current[1] = refElement)}
                 />
                 <CurriculumContainer
-                    ref={(el) => (scrollTarget.current[2] = el)}
+                    ref={(refElement) => (scrollTarget.current[2] = refElement)}
                 ></CurriculumContainer>
                 <FirstClassExplanation />
                 <SecondClassExplanation />
                 <CreatorInfoContainer
-                    ref={(el) => (scrollTarget.current[3] = el)}
+                    ref={(refElement) => (scrollTarget.current[3] = refElement)}
                 />
                 <CommunityContainer
-                    ref={(el) => (scrollTarget.current[4] = el)}
+                    ref={(refElement) => (scrollTarget.current[4] = refElement)}
                 />
                 <RefundInfoContainer
-                    ref={(el) => (scrollTarget.current[5] = el)}
+                    ref={(refElement) => (scrollTarget.current[5] = refElement)}
                 />
                 <RecommendContainer
-                    ref={(el) => (scrollTarget.current[6] = el)}
+                    ref={(refElement) => (scrollTarget.current[6] = refElement)}
                     data-name="Recommend"
                 >
                     <ImageContainer
