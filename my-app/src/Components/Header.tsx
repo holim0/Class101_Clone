@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logoImg from "../assets/logoImg.png";
 import {
     Container,
@@ -7,6 +7,7 @@ import {
     MenuContainer,
     SearchForm,
 } from "../styles/headerStyle";
+
 import SearchIcon from "@material-ui/icons/Search";
 
 const Header = () => {
