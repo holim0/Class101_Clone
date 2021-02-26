@@ -244,8 +244,9 @@ const ClassInformationContainer = () => {
         Introduce: 1,
         Curriculum: 2,
         Creator: 3,
-        Refund: 4,
-        Recommend: 5,
+        Community: 4,
+        Refund: 5,
+        Recommend: 6,
     };
 
     const scrollHandler = () => {
@@ -338,12 +339,14 @@ const ClassInformationContainer = () => {
                 <CreatorInfoContainer
                     ref={(el) => (scrollTarget.current[3] = el)}
                 />
-                <CommunityContainer />
-                <RefundInfoContainer
+                <CommunityContainer
                     ref={(el) => (scrollTarget.current[4] = el)}
                 />
-                <RecommendContainer
+                <RefundInfoContainer
                     ref={(el) => (scrollTarget.current[5] = el)}
+                />
+                <RecommendContainer
+                    ref={(el) => (scrollTarget.current[6] = el)}
                     data-name="Recommend"
                 >
                     <ImageContainer
