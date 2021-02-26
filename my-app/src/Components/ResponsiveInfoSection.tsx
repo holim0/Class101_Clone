@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-
 import {
     CategoryTitle,
     Title,
@@ -15,6 +14,7 @@ import {
 import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
 import navBarLogoImg from "../assets/navBarLogoImg.png";
 import { RootState } from "../store";
+import ScreenShareIcon from "@material-ui/icons/ScreenShare";
 
 const Container = styled.div`
     display: none;
@@ -54,7 +54,12 @@ const ResponsiveInfoSection = () => {
 
             <ButtonContainer>
                 <button>❤️ {goodAmount}</button>
-                <button style={{ marginRight: "0" }}>공유하기</button>
+                <button style={{ marginRight: "0" }}>
+                    <div>
+                        <ScreenShareIcon fontSize="small" />
+                    </div>
+                    <span>공유하기</span>
+                </button>
             </ButtonContainer>
             <Banner>
                 <div>

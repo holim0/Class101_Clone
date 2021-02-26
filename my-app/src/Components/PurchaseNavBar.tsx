@@ -14,6 +14,8 @@ import {
     Banner,
 } from "../styles/PurchaseNavBarStyle";
 import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
+import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
+import ScreenShareIcon from "@material-ui/icons/ScreenShare";
 import { RootState } from "../store";
 import navBarLogoImg from "../assets/navBarLogoImg.png";
 
@@ -51,9 +53,26 @@ const PurchaseNavBar = ({ flag }: Props) => {
                 </VideoContainer>
 
                 <ButtonContainer>
-                    <button>❤️ {goodAmount}</button>
-                    <button>공유하기</button>
-                    <button style={{ marginRight: "0" }}>선물하기</button>
+                    <button>
+                        <span>❤️ {goodAmount}</span>
+                    </button>
+                    <button>
+                        <div>
+                            <ScreenShareIcon fontSize="small" />
+                        </div>
+
+                        <span>공유하기</span>
+                    </button>
+                    <button
+                        style={{
+                            marginRight: "0",
+                        }}
+                    >
+                        <div>
+                            <CardGiftcardIcon fontSize="small" />
+                        </div>
+                        <span>선물하기</span>
+                    </button>
                 </ButtonContainer>
                 <div style={{ marginTop: "10px" }}>
                     <MoreOptionBtn>수강 옵션 구경하기</MoreOptionBtn>

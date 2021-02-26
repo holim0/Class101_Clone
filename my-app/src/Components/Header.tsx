@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import logoImg from "../assets/logoImg.png";
 import {
     Container,
     LogoImg,
     SearchInput,
     MenuContainer,
+    SearchForm,
 } from "../styles/headerStyle";
+import SearchIcon from "@material-ui/icons/Search";
 
 const Header = () => {
     const handleLogoImg = () => {
@@ -15,7 +17,11 @@ const Header = () => {
     return (
         <Container>
             <LogoImg src={logoImg} onClick={handleLogoImg}></LogoImg>
-            <SearchInput placeholder="배우고 싶은 것이 있나요?" />
+            <SearchForm>
+                <SearchInput placeholder="배우고 싶은 것이 있나요?" />
+                <SearchIcon />
+            </SearchForm>
+
             <MenuContainer>
                 <div>크리에이터 지원</div>
                 <div>로그인</div>

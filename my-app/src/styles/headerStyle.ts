@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import SearchIcon from "@material-ui/icons/Search";
 
 const Container = styled.div`
     display: flex;
@@ -21,25 +22,35 @@ const LogoImg = styled.img`
     }
 `;
 
+const SearchForm = styled.div`
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-left: 10px;
+    padding: 0 12px;
+    background-color: #f8f8f9;
+    border: 1px solid rgb(248, 248, 249);
+    box-sizing: border-box;
+    border-radius: 24px;
+    text-align: left;
+    color: rgb(26, 26, 26);
+    @media only screen and (max-width: 1024px) {
+        width: 200%;
+    }
+`;
+
 const SearchInput = styled.input`
-    width: 60%;
+    width: 100%;
     height: 40px;
     font-size: 14px;
     outline: none;
-    box-shadow: rgb(0 0 0 / 4%) 0px 0px 1px 0px,
-        rgb(41 42 43 / 16%) 0px 1px 3px 0px;
-
     border-radius: 3px;
     border: 0;
-    padding-left: 20px;
-    margin-left: 20px;
     transition: all 200ms linear;
+    background-color: #f8f8f9;
+    position: relative;
     &:focus {
-        width: 100%;
-        background-color: #f8f8f9;
-    }
-    @media only screen and (max-width: 1024px) {
-        width: 200%;
+        width: 150%;
     }
 `;
 
@@ -58,4 +69,4 @@ const MenuContainer = styled.div`
     }
 `;
 
-export { Container, LogoImg, SearchInput, MenuContainer };
+export { Container, LogoImg, SearchInput, MenuContainer, SearchForm };

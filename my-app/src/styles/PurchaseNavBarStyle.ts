@@ -60,21 +60,28 @@ const ButtonContainer = styled.div`
     justify-content: space-between;
     width: 100%;
     margin-top: 16px;
-    /* padding: 0 20px; */
     & > button {
         border: 0;
         outline: none;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
+        flex-wrap: wrap;
         background-color: rgb(248, 248, 249);
         font-weight: 500;
         border-radius: 3px;
         font-size: 14px;
-        padding: 0px 14px;
         height: 40px;
         white-space: nowrap;
         transition: background-color 0.1s ease 0s;
         width: 100%;
         margin-right: 10px;
+    }
+
+    & > button > span {
+        margin-left: 5px;
     }
 
     & > button:hover {
