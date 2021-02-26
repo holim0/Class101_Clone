@@ -33,11 +33,12 @@ import { scrollType } from "../types";
 import PurchaseNavBar from "./PurchaseNavBar";
 import ResponsiveInfoSection from "./ResponsiveInfoSection";
 import ReviewContainer from "./ReviewContainer";
-import Curriculum from "./CurriculumContainer";
+import CurriculumContainer from "./CurriculumContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { RequestClassInfoData } from "../store/ClassInfoStore";
 import { RootState } from "../store";
 import { ButtonPropsType } from "../types";
+import CommunityContainer from "./CommunityContainer";
 
 const ClassIntroduceContainer = forwardRef<HTMLDivElement>((props, ref) => {
     return (
@@ -144,7 +145,7 @@ const ButtonSpace = forwardRef(
     }
 );
 
-const SecondClassMainSpace = forwardRef<HTMLDivElement>((props, ref) => {
+const FirstClassExplanation = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <CommonContainer ref={ref}>
             <TextTitle shape="">
@@ -167,7 +168,7 @@ const SecondClassMainSpace = forwardRef<HTMLDivElement>((props, ref) => {
     );
 });
 
-const ThirdClassMainSpace = forwardRef<HTMLDivElement>((props, ref) => {
+const SecondClassExplanation = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <CommonContainer ref={ref}>
             <TextTitle shape="">
@@ -329,14 +330,15 @@ const ClassInformationContainer = () => {
                 <ClassIntroduceContainer
                     ref={(el) => (scrollTarget.current[1] = el)}
                 />
-                <Curriculum
+                <CurriculumContainer
                     ref={(el) => (scrollTarget.current[2] = el)}
-                ></Curriculum>
-                <SecondClassMainSpace />
-                <ThirdClassMainSpace />
+                ></CurriculumContainer>
+                <FirstClassExplanation />
+                <SecondClassExplanation />
                 <CreatorInfoContainer
                     ref={(el) => (scrollTarget.current[3] = el)}
                 />
+                <CommunityContainer />
                 <RefundInfoContainer
                     ref={(el) => (scrollTarget.current[4] = el)}
                 />

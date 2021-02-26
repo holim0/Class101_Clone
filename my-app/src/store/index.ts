@@ -6,7 +6,7 @@ import ClassInfoSaga from "./ClassInfoSaga";
 const rootReducer = combineReducers({ ClassInfoStore });
 
 export function* rootSaga() {
-    yield all([ClassInfoSaga()]); // all 은 배열 안의 여러 사가를 동시에 실행시켜줍니다.
+    yield all([ClassInfoSaga()]);
 }
 export type RootState = ReturnType<typeof rootReducer>;
 

@@ -56,7 +56,6 @@ const PurchaseNavBar = ({ flag }: Props) => {
                     <OndemandVideoIcon />
                     <div style={{ marginLeft: "10px" }}>콘텐츠 이용권</div>
                 </VideoContainer>
-
                 <ButtonContainer>
                     <button>
                         <span>❤️ {goodAmount}</span>
