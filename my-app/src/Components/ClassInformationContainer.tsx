@@ -21,7 +21,7 @@ import {
     RefundNotice,
     DetailRefundInfo,
     RecommendContainer,
-} from "../styles/ClassInfoStyle";
+} from "../styles/classInfoStyle";
 import mainImg from "../assets/mainImg.png";
 import infoImg from "../assets/infoImg.png";
 import infoImg2 from "../assets/infoImg2.png";

@@ -10,7 +10,7 @@ import {
     ButtonContainer,
     Option,
     Banner,
-} from "../styles/PurchaseNavBarStyle";
+} from "../styles/purchaseNavBarStyle";
 import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
 import navBarLogoImg from "../assets/navBarLogoImg.png";
 import { RootState } from "../store";

@@ -12,7 +12,7 @@ import {
     Option,
     MoreOptionBtn,
     Banner,
-} from "../styles/PurchaseNavBarStyle";
+} from "../styles/purchaseNavBarStyle";
 import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import ScreenShareIcon from "@material-ui/icons/ScreenShare";
