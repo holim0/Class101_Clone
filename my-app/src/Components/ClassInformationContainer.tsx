@@ -32,13 +32,14 @@ import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { scrollType } from "../types";
 import PurchaseNavBar from "./PurchaseNavBar";
 import ResponsiveInfoSection from "./ResponsiveInfoSection";
-import Review from "./Review";
-import Curriculum from "./Curriculum";
+import ReviewContainer from "./ReviewContainer";
+import Curriculum from "./CurriculumContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { RequestClassInfoData } from "../store/ClassInfoStore";
 import { RootState } from "../store";
+import { ButtonPropsType } from "../types";
 
-const ClassIntroduceContainer = forwardRef((props, ref: any) => {
+const ClassIntroduceContainer = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <ClassMainInfo>
             <IntroduceTitle ref={ref} data-name="Introduce">
@@ -83,7 +84,67 @@ const ClassIntroduceContainer = forwardRef((props, ref: any) => {
     );
 });
 
-const SecondClassMainSpace = forwardRef((props, ref: any) => {
+const ButtonSpace = forwardRef(
+    ({ flag, curSection, scrollToRef }: ButtonPropsType, ref: any) => {
+        return (
+            <ButtonContainer flag={flag} ref={ref}>
+                <ButtonInside>
+                    <Btn
+                        value="Review"
+                        flag={curSection === "Review"}
+                        onClick={scrollToRef}
+                    >
+                        후기
+                    </Btn>
+                    <Btn
+                        value="Introduce"
+                        flag={curSection === "Introduce"}
+                        onClick={scrollToRef}
+                    >
+                        클래스 소개
+                    </Btn>
+                    <Btn
+                        value="Curriculum"
+                        flag={curSection === "Curriculum"}
+                        onClick={scrollToRef}
+                    >
+                        커리큘럼
+                    </Btn>
+                    <Btn
+                        value="Creator"
+                        flag={curSection === "Creator"}
+                        onClick={scrollToRef}
+                    >
+                        크리에이터
+                    </Btn>
+                    <Btn
+                        value="Community"
+                        flag={curSection === "Community"}
+                        onClick={scrollToRef}
+                    >
+                        커뮤니티
+                    </Btn>
+                    <Btn
+                        value="Refund"
+                        flag={curSection === "Refund"}
+                        onClick={scrollToRef}
+                    >
+                        환불 정책
+                    </Btn>
+                    <Btn
+                        value="Recommend"
+                        flag={curSection === "Recommend"}
+                        onClick={scrollToRef}
+                    >
+                        추천
+                    </Btn>
+                </ButtonInside>
+            </ButtonContainer>
+        );
+    }
+);
+
+const SecondClassMainSpace = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <CommonContainer ref={ref}>
             <TextTitle shape="">
@@ -106,7 +167,7 @@ const SecondClassMainSpace = forwardRef((props, ref: any) => {
     );
 });
 
-const ThirdClassMainSpace = forwardRef((props, ref: any) => {
+const ThirdClassMainSpace = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <CommonContainer ref={ref}>
             <TextTitle shape="">
@@ -129,7 +190,7 @@ const ThirdClassMainSpace = forwardRef((props, ref: any) => {
     );
 });
 
-const CreatorInfoContainer = forwardRef((props, ref: any) => {
+const CreatorInfoContainer = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <CommonContainer ref={ref} data-name="Creator">
             <div
@@ -147,7 +208,7 @@ const CreatorInfoContainer = forwardRef((props, ref: any) => {
     );
 });
 
-const RefundContainer = forwardRef((props, ref: any) => {
+const RefundInfoContainer = forwardRef<HTMLDivElement>((props, ref) => {
     return (
         <CommonContainer ref={ref} data-name="Refund">
             <TextTitle shape="">환불정책</TextTitle>
@@ -163,13 +224,13 @@ const RefundContainer = forwardRef((props, ref: any) => {
     );
 });
 
-const ClassInformation = () => {
+const ClassInformationContainer = () => {
     const [flag, setFlag] = useState(false);
 
     const [curSection, setCurYLocation] = useState<string>("Review");
 
-    const scrollTarget = useRef<any>([]);
-    const tab = useRef<any>(null);
+    const scrollTarget = useRef<HTMLDivElement[]>([]);
+    const tabRef = useRef<HTMLButtonElement>(null);
 
     const dispatch = useDispatch();
 
@@ -187,7 +248,8 @@ const ClassInformation = () => {
     };
 
     const scrollHandler = () => {
-        const relativeLocation = tab.current.getBoundingClientRect().top;
+        const relativeLocation: any = tabRef?.current?.getBoundingClientRect()
+            .top;
         if (relativeLocation <= 0) {
             setFlag(true);
         } else {
@@ -211,15 +273,16 @@ const ClassInformation = () => {
                 }
             );
             if (curTargetView.length > 0) {
-                const targetName =
+                const targetName: any =
                     curTargetView[curTargetView.length - 1].dataset.name;
                 setCurYLocation(targetName);
             }
         });
     }, []);
 
-    const scrollToRef = (event: any) => {
-        const idx = event.target.value;
+    const scrollToRef = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const element = event.target as HTMLButtonElement;
+        const idx = element.value;
         const target = targetObject[idx];
 
         window.scrollTo({
@@ -233,59 +296,12 @@ const ClassInformation = () => {
             <ClassInfoContainer>
                 <ImageContainer src={mainImg} alt="main"></ImageContainer>
                 <ResponsiveInfoSection />
-                <ButtonContainer flag={flag} ref={tab}>
-                    <ButtonInside>
-                        <Btn
-                            value="Review"
-                            flag={curSection === "Review"}
-                            onClick={scrollToRef}
-                        >
-                            후기
-                        </Btn>
-                        <Btn
-                            value="Introduce"
-                            flag={curSection === "Introduce"}
-                            onClick={scrollToRef}
-                        >
-                            클래스 소개
-                        </Btn>
-                        <Btn
-                            value="Curriculum"
-                            flag={curSection === "Curriculum"}
-                            onClick={scrollToRef}
-                        >
-                            커리큘럼
-                        </Btn>
-                        <Btn
-                            value="Creator"
-                            flag={curSection === "Creator"}
-                            onClick={scrollToRef}
-                        >
-                            크리에이터
-                        </Btn>
-                        <Btn
-                            value="Community"
-                            flag={curSection === "Community"}
-                            onClick={scrollToRef}
-                        >
-                            커뮤니티
-                        </Btn>
-                        <Btn
-                            value="Refund"
-                            flag={curSection === "Refund"}
-                            onClick={scrollToRef}
-                        >
-                            환불 정책
-                        </Btn>
-                        <Btn
-                            value="Recommend"
-                            flag={curSection === "Recommend"}
-                            onClick={scrollToRef}
-                        >
-                            추천
-                        </Btn>
-                    </ButtonInside>
-                </ButtonContainer>
+                <ButtonSpace
+                    ref={tabRef}
+                    flag={flag}
+                    curSection={curSection}
+                    scrollToRef={scrollToRef}
+                />
                 <ClassSimpleInfoContainer>
                     <ClassSimpleInfoTitle>클래스 정보</ClassSimpleInfoTitle>
                     <ClassSimpleInfo>
@@ -309,7 +325,7 @@ const ClassInformation = () => {
                         </Info>
                     </ClassSimpleInfo>
                 </ClassSimpleInfoContainer>
-                <Review ref={(el) => (scrollTarget.current[0] = el)} />
+                <ReviewContainer ref={(el) => (scrollTarget.current[0] = el)} />
                 <ClassIntroduceContainer
                     ref={(el) => (scrollTarget.current[1] = el)}
                 />
@@ -321,7 +337,9 @@ const ClassInformation = () => {
                 <CreatorInfoContainer
                     ref={(el) => (scrollTarget.current[3] = el)}
                 />
-                <RefundContainer ref={(el) => (scrollTarget.current[4] = el)} />
+                <RefundInfoContainer
+                    ref={(el) => (scrollTarget.current[4] = el)}
+                />
                 <RecommendContainer
                     ref={(el) => (scrollTarget.current[5] = el)}
                     data-name="Recommend"
@@ -337,4 +355,4 @@ const ClassInformation = () => {
     );
 };
 
-export default ClassInformation;
+export default ClassInformationContainer;

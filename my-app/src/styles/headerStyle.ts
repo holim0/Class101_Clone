@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import SearchIcon from "@material-ui/icons/Search";
 
 const Container = styled.div`
     display: flex;

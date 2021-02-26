@@ -23,4 +23,10 @@ interface ClassInfoType {
     discountAmount: number;
     goodAmount: number;
 }
-export type { scrollType, ClassSimpleInfo, ClassInfoType };
+
+interface ButtonPropsType {
+    flag: boolean;
+    curSection: string;
+    scrollToRef: (event: any) => void;
+}
+export type { scrollType, ClassSimpleInfo, ClassInfoType, ButtonPropsType };

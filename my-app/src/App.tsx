@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Components/Header";
 import { GlobalContainer, MainContainer } from "./styles/mainStyle";
-import ClassInformation from "./Components/ClassInformation";
+import ClassInformationContainer from "./Components/ClassInformationContainer";
 import Footer from "./Components/Footer";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
         <GlobalContainer>
             <Header />
             <MainContainer>
-                <ClassInformation />
+                <ClassInformationContainer />
             </MainContainer>
             <Footer />
         </GlobalContainer>

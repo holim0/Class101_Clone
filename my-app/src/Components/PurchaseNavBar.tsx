@@ -65,7 +65,6 @@ const PurchaseNavBar = ({ flag }: Props) => {
                         <div>
                             <ScreenShareIcon fontSize="small" />
                         </div>
-
                         <span>공유하기</span>
                     </button>
                     <button

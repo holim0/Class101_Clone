@@ -21,7 +21,6 @@ const Header = () => {
                 <SearchInput placeholder="배우고 싶은 것이 있나요?" />
                 <SearchIcon />
             </SearchForm>
-
             <MenuContainer>
                 <div>크리에이터 지원</div>
                 <div>로그인</div>
