@@ -44,7 +44,12 @@ const PurchaseNavBar = ({ flag }: Props) => {
                 </OptionContainer>
                 <PriceContainer>
                     <div>{`${monthlyInstallments}개월 할부`}</div>
-                    <div>{`${discountAmount}% 월 ${monthlyPayment.toLocaleString()}원`}</div>
+                    <div style={{ display: "flex" }}>
+                        <div
+                            style={{ color: "red", marginRight: "10px" }}
+                        >{`${discountAmount}%`}</div>
+                        <div>{`월 ${monthlyPayment.toLocaleString()}원`}</div>
+                    </div>
                 </PriceContainer>
 
                 <VideoContainer>
@@ -66,6 +71,8 @@ const PurchaseNavBar = ({ flag }: Props) => {
                     <button
                         style={{
                             marginRight: "0",
+                            backgroundColor: "orange",
+                            color: "white",
                         }}
                     >
                         <div>
